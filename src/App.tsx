@@ -1,10 +1,14 @@
 import React from 'react'
-import './App.css'
+import './App.scss'
+
+import CountdownTimer from '#components/CountdownTimer/CountdownTimer'
+import UserList from '#components/UserList/UserList'
 
 const App : React.FC = () => {
     return (
         <>
-            Hello
+            <CountdownTimer timerStart={10} />
+            <UserList />
         </>
     )
 }

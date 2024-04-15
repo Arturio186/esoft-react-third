@@ -3,6 +3,7 @@ import './UserList.scss'
 
 import { getUsers } from "#api/UserAPI";
 
+import UserCard from "#components/UserCard/UserCard";
 import Loader from "#components/UI/Loader/Loader";
 
 import IUser from "#interfaces/IUser";
@@ -26,9 +27,12 @@ const UserList : React.FC = () => {
     }
 
     return (
-        <div className="users">
-           {users.map(user => <p key={user.id}>{user.name}</p>)}
-        </div>
+        <>
+            <h2 className="title">Пользователи</h2>
+            <div className="users">
+            {users.map(user => <UserCard key={user.id} user={user} />)}
+            </div>
+        </>
     )
 }
 

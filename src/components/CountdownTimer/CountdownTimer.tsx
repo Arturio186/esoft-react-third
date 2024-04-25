@@ -8,16 +8,19 @@ const CountdownTimer : React.FC<ICountdownTimerProps> = ({ timerStart }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimerValue(timerValue - 1)
+            setTimerValue(prev => {
+                if (prev === 0) {
+                    clearInterval(interval)
+                    return prev
+                }
+                else {
+                    return prev - 1
+                }
+            })
         }, 1000)
-
-        if (timerValue === 0) {
-            clearInterval(interval)
-        }
     
         return () => clearInterval(interval) 
-        
-    }, [timerValue])    
+    }, [])    
     
 
     return (
